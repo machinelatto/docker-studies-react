@@ -1,0 +1,10 @@
+sudo: required
+language: generic 
+services:
+    - docker
+
+before-install:
+    - docker build -t machinelatto/docker-studies-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true machinelatto/docker-studies-react npm run test
